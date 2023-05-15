@@ -1,0 +1,53 @@
+---
+title: Instatrace Setup Guide
+description: A step-by-step guide on how to set up the Instatrace application
+---
+
+import { useState } from 'react';
+
+# Instatrace Setup Guide
+
+This guide will walk you through the process of setting up the Instatrace application. We will cover the installation, configuration, and usage of Instatrace.
+
+## Installation
+
+To install Instatrace, follow these steps:
+
+1. Download the Instatrace agent from the official website.
+2. Install the agent on your servers by following the provided instructions.
+
+## Configuration
+
+After installing the Instatrace agent, you will need to configure your application to send trace data and metrics to Instatrace. Here's an example of how to configure Instatrace using a React component:
+
+```jsx
+import React, { useState } from 'react';
+import Instatrace from 'instatrace';
+
+const InstatraceConfig = () => {
+  const [apiKey, setApiKey] = useState('');
+
+  const handleApiKeyChange = (event) => {
+    setApiKey(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    Instatrace.configure({ apiKey });
+  };
+
+  return (
+    <div>
+      <label htmlFor="apiKey">API Key:</label>
+      <input
+        type="text"
+        id="apiKey"
+        value={apiKey}
+        onChange={handleApiKeyChange}
+      />
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+};
+
+export default InstatraceConfig;
+```
